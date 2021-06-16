@@ -11,8 +11,9 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeInProgressState());
     try {
       final summary = await _getSummaryUseCase.call();
-      emit(HomeSuccessState());
-    } catch (_) {
+      emit(HomeSuccessState(summary));
+    } catch (error) {
+      print(error);
       emit(HomeFailureState());
     }
   }

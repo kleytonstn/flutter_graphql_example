@@ -25,17 +25,18 @@ dependencies:
     sdk: flutter
   provider: 5.0.0
   flutter_bloc: 7.0.1
-  mockito: 5.0.10
-  json_annotation: 4.0.1
+  bloc: 7.0.0
+  mockito: 4.0.0
+  json_annotation: 3.1.1
   shimmer: 2.0.0
-  graphql_flutter: 5.0.0
+  graphql_flutter: 4.0.1
   equatable: 2.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  json_serializable: any
-  build_runner: any
+  json_serializable: 3.5.0
+  build_runner: 1.10.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
