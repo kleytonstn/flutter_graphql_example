@@ -5,6 +5,9 @@ import 'package:flutter_graphql_example/modules/home/data/constants/spaces.dart'
 import 'package:flutter_graphql_example/modules/home/data/constants/strings.dart';
 import 'package:flutter_graphql_example/modules/home/data/constants/values.dart';
 import 'package:flutter_graphql_example/modules/home/data/models/summary_model.dart';
+import 'package:flutter_graphql_example/modules/home/ui/widgets/custom_button.dart';
+import 'package:flutter_graphql_example/modules/home/ui/widgets/detail_row.dart';
+import 'package:flutter_graphql_example/modules/home/ui/widgets/line_divider.dart';
 import 'package:flutter_graphql_example/modules/home/ui/widgets/three_dots.dart';
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,6 +20,36 @@ class SummaryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final money = FlutterMoneyFormatter(
         amount: summary.total.toDouble(),
+        settings: MoneyFormatterSettings(
+          symbol: moneySymbol,
+          thousandSeparator: '.',
+          decimalSeparator: ',',
+          symbolAndNumberSeparator: ' ',
+          fractionDigits: 2,
+          // compactFormatType: CompactFormatType.sort,
+        ));
+    final profitabilityFormatted = FlutterMoneyFormatter(
+        amount: summary.profitability,
+        settings: MoneyFormatterSettings(
+          symbol: percentSymbol,
+          thousandSeparator: '',
+          decimalSeparator: ',',
+          symbolAndNumberSeparator: ' ',
+          fractionDigits: 3,
+          // compactFormatType: CompactFormatType.sort,
+        ));
+    final cdiFormatted = FlutterMoneyFormatter(
+        amount: summary.cdi,
+        settings: MoneyFormatterSettings(
+          symbol: percentSymbol,
+          thousandSeparator: '',
+          decimalSeparator: ',',
+          symbolAndNumberSeparator: ' ',
+          fractionDigits: 2,
+          // compactFormatType: CompactFormatType.sort,
+        ));
+    final gainFormatted = FlutterMoneyFormatter(
+        amount: summary.gain,
         settings: MoneyFormatterSettings(
           symbol: moneySymbol,
           thousandSeparator: '.',
@@ -47,7 +80,7 @@ class SummaryCard extends StatelessWidget {
                 ThreeDots(),
               ],
             ),
-            SizedBox(height: 40),
+            SizedBox(height: largeSpace),
             Center(
                 child: Text(
               investedValue,
@@ -56,7 +89,7 @@ class SummaryCard extends StatelessWidget {
                 color: darkGreyColor,
               ),
             )),
-            SizedBox(height: 10),
+            SizedBox(height: smallSpace),
             Center(
                 child: Text(
               money.output.symbolOnLeft,
@@ -66,6 +99,19 @@ class SummaryCard extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             )),
+            SizedBox(height: largeSpace),
+            DetailRow(
+                label: profitability,
+                value: profitabilityFormatted.output.symbolOnRight),
+            SizedBox(height: smallSpace),
+            DetailRow(label: cdi, value: cdiFormatted.output.symbolOnRight),
+            SizedBox(height: smallSpace),
+            DetailRow(
+                label: earnings, value: gainFormatted.output.symbolOnLeft),
+            SizedBox(height: regularSpace),
+            LineDivider(),
+            SizedBox(height: regularSpace),
+            Align(alignment: Alignment.bottomRight, child: CustomButton()),
           ],
         ),
       ),
