@@ -9,3 +9,4 @@ const cdi = 'CDI';
 const earnings = 'Ganhos/mês';
 const seeMore = 'VER MAIS';
 const percentSymbol = '%';
+const errorMessage = 'Ocorreu um erro inesperado';
