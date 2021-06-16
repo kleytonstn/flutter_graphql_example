@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_graphql_example/modules/home/data/constants/spaces.dart';
 import 'package:flutter_graphql_example/modules/home/data/models/summary_model.dart';
+import 'package:flutter_graphql_example/modules/home/ui/widgets/summary_card.dart';
 
 class HomeView extends StatefulWidget {
   final SummaryModel summary;
@@ -12,7 +14,9 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    print(widget.summary.toJson());
-    return Container(color: Colors.blue);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
+      child: Center(child: SummaryCard(widget.summary)),
+    );
   }
 }

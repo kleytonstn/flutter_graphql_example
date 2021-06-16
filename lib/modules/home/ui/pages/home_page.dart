@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_graphql_example/modules/home/data/constants/colors.dart';
 import 'package:flutter_graphql_example/modules/home/data/constants/strings.dart';
 import 'package:flutter_graphql_example/modules/home/domain/cubits/home_cubit.dart';
 import 'package:flutter_graphql_example/modules/home/domain/cubits/home_state.dart';
@@ -19,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final cubit = Provider.of<HomeCubit>(context);
     return Scaffold(
+      backgroundColor: lightBlueColor,
       appBar: AppBar(title: Text(appTitle)),
       body: BlocBuilder<HomeCubit, HomeState>(
         bloc: cubit,

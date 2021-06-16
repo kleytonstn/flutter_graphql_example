@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
           GetSummaryUseCase(HomeRepository(HomeService(graphQLClient)))),
       child: MaterialApp(
         title: appTitle,
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.blue),
         home: HomePage(),
       ),
